@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif, monospace;
+}
+
+html, body{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+.container{
+    position: relative;
+    height: 100%;
+}
+#screen{
+    background-color: black;
+    image-rendering:pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    display: block;
+}
+
+.score{
+    width: 100%;
+    height: 100vh - 150px;
+    position: absolute;
+    color: white;
+    top: 10%;
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    gap: 100px;
+
+}
+
+.score span{
+    font-size:50px;
+    
+}
+
+.controlls{
+    width: 100%;
+    height: 100vh - 150px;
+    position: absolute;
+    color: white;
+    bottom: 10%;
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    gap: 100px; width: 100%;
+}
+.controlls button{
+    background-color: black;
+    border:none;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    color:white;
+    cursor: pointer;
+    opacity: 0.25;
+    transition: .5s ease;
+}
+.controlls button svg {
+    transform: translateX(20px);
+    opacity: 0;
+    transition: .5s;
+}
+.controlls button:hover{
+    
+    opacity: 1;
+}
+
+.controlls button:hover svg{
+    transform: translateX(0);
+    opacity: 1;
+    right: 0;
+}
+
+.controlls span{
+    font-size: 15px;
+    font-weight: 700;
+}

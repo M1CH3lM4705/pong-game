@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/pong.css" rel="stylesheet">
+    <title>Pong Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="score"s data-score="score">
+            <span data-score-player="player1">0</span>
+            <span>:</span>
+            <span data-score-player="player2">0</span>
+        </div>
+        <canvas id="screen"></canvas>
+        <div class="controlls" data-controlls="controlls">
+            <button data-controll="start">
+                START <i class="fa-solid fa-play"></i>
+            </button>
+            <button data-controll="reset">
+                RESET <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
