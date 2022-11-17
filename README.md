@@ -11,7 +11,6 @@ Pong Game é um jogo que simula o tênis de mesa. Foi inspirando no jogo do Atar
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#setup)
 
 ## General info
 Este projeto foi desenvolvido com o intuíto de intesificar e melhorar conceitos e 
@@ -29,6 +28,9 @@ Project is created with:
 
 [Pong Game](https://pong-game-michel.vercel.app/)
 
+# Autor
+
+| [<img src="https://avatars.githubusercontent.com/u/63553960?v=4" width=115><br><sub>Michel Matos</sub>](https://https://github.com/M1CH3lM4705)]
 
 ## Referência
 

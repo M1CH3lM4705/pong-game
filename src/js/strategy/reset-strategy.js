@@ -6,7 +6,8 @@ const { start, reset } = beginGame()
 const clickReset = () => {
     const button = document.querySelector(`[data-controll="pause"]`)
     const pauseText = 'pause';
-
+    if(!button) return;
+    
     const execute = () => {
         reset()
         renderTextButton(button, pauseText)

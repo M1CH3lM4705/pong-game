@@ -7,7 +7,7 @@ const contenxtGame = () => {
 
     const setStrategy = newStrategy => strategy = newStrategy
     const execute = () => {
-        strategy.execute()
+        strategy?.execute()
     }
 
     return {
