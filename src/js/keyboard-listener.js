@@ -44,11 +44,50 @@ const createKeyboardListener = () => {
         notifyAll(command)
     }
 
+    const clickedOnPressed = () => {
+        let isHeld = false
+        let activePressedTimeouId = null
+        const arrayEventsIn = ["mousedown", "touchstart"]
+        const arrayEventsOut = [
+            "mouseup",
+            "mouseleave",
+            "mouseout",
+            "touchend",
+            "touchcancel"
+        ]
+
+        const onPressedStart = (e, callback) =>{
+            isHeld = true
+
+           activePressedTimeouId = setInterval(() => {
+                if(isHeld) callback(e)
+            },50)
+        }
+
+        const onPressedEnd = () => {
+            isHeld = false;
+            clearInterval(activePressedTimeouId)
+        }
+
+        const apply = (target, callback) => {
+            console.log(target)
+            arrayEventsIn.forEach(type => {
+                target.addEventListener(type, e => onPressedStart(e, callback))
+            });
+
+            arrayEventsOut.forEach(type => {
+                target.addEventListener(type, onPressedEnd)
+            })
+        }
+
+        return { apply }
+    }
+
     document.addEventListener('keydown', handleKeyDown)
 
     const {clickedButton} = isMobile() ? activeMobileButtons() : () =>{}
     
-    btnMobile.addEventListener('mousedown', clickedButton)
+    clickedOnHold().apply(btnMobile, clickedButton)
 
     return {
         subscribe
