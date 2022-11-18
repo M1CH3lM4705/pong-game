@@ -30,7 +30,7 @@ Project is created with:
 
 # Autor
 
-| [<img src="https://avatars.githubusercontent.com/u/63553960?v=4" width=115><br><sub>Michel Matos</sub>](https://https://github.com/M1CH3lM4705)]
+| [<img src="https://avatars.githubusercontent.com/u/63553960?v=4" width=115><br><sub>Michel Matos</sub>](https://https://github.com/M1CH3lM4705)
 
 ## Referência
 
