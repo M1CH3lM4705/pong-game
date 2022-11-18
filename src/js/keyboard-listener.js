@@ -87,7 +87,7 @@ const createKeyboardListener = () => {
 
     const {clickedButton} = isMobile() ? activeMobileButtons() : () =>{}
     
-    clickedOnHold().apply(btnMobile, clickedButton)
+    clickedOnPressed().apply(btnMobile, clickedButton)
 
     return {
         subscribe
