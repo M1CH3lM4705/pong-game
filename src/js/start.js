@@ -4,7 +4,7 @@ import Canvas from "./render-screen.js";
 let movePlayerId;
 let moveBallId
 
-const beginGame = () => {
+const beginGame = (configurations = {}) => {
     let isPaused = false;
     const screen = document.getElementById('screen');
     const body = document.querySelector('body');
@@ -12,8 +12,8 @@ const beginGame = () => {
     screen.width = body.clientWidth;
     screen.height = body.clientHeight;
 
-    const game = createGame(screen)
-    const {resizeCanvas} =  Canvas()
+    const game = configurations.game || createGame(screen)
+    const {resizeCanvas} =  configurations.resizeCanvas || Canvas()
 
     game.addPlayer({playerId:'player1', playerX:0, playerY:0, w:20, h:150, score:0})
     game.addPlayer({playerId:'raquete2', playerX:screen.width - 20, playerY:0, w:20, h:150, score:0})
@@ -22,7 +22,7 @@ const beginGame = () => {
 
         resizeCanvas(screen, game, isPaused, requestAnimationFrame)
 
-        const keyboardListener = createKeyboardListener()
+        const keyboardListener = configurations.keyboardListener || createKeyboardListener()
         keyboardListener.subscribe(game.movePlayer)        
         
         movePlayerId = setInterval(game.moveBot, 10)

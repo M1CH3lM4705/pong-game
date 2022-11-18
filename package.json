@@ -1,0 +1,27 @@
+{
+  "name": "ponggame",
+  "version": "1.0.0",
+  "description": "Pong Game é um jogo que simula o tênis de mesa. Foi inspirando no jogo do Atari",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M1CH3lM4705/pong-game.git"
+  },
+  "author": "Michel Matos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M1CH3lM4705/pong-game/issues"
+  },
+  "homepage": "https://github.com/M1CH3lM4705/pong-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1"
+  }
+}
