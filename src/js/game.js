@@ -1,3 +1,5 @@
+import player from './player.js'
+
 const scorePlayer1 = document.querySelector('[data-score-player="player1"]')
 const scorePlayer2 = document.querySelector('[data-score-player="player2"]')
 
@@ -45,54 +47,52 @@ const createGame = ({width, height}) => {
     
     const addPlayer = command =>{
         const {playerId, playerX, playerY, w, h, score} = command
-
-        state.players[playerId] = {
-            x:playerX,
-            y:playerY,
-            w,
-            h,
-            score
-        }
+        const newPlayer = player(playerId, playerX, playerY)
+        state.players[playerId] = {newPlayer}
     }
     
     const movePlayer = command => {
         console.log(`Movendo ${command.playerId} com ${command.keyPressed}`)
-        const player = state.players[command.playerId]
+        const { newPlayer } = state.players[command.playerId]
+
         const keyPressed = command.keyPressed
 
         const acceptedMoves = {
             ArrowUp: (player) => {
-                if (player.y - 20 >= 0)
-                    player.y -= 20
+                if (player.GreaterThenOrEqualZero()){
+                    player.playerUp()
+                }
                 return;
             },
             ArrowDown: (player) => {
-                if (player.y + player.h < state.screen.height)
-                    player.y += 20
+                if (player.lessThenScreenHeight(state.screen.height)){
+                    player.playerDown()
+                }
+                    
                 return
             }
         }
 
         const moveFunction = acceptedMoves[keyPressed]
         if(player && moveFunction){
-            moveFunction(player)
+            moveFunction(newPlayer)
         } 
     }
 
     const moveBot = () => {
-        const botPlayer = state.players['raquete2']
+        const {newPlayer} = state.players['raquete2']
 
         const ArrowDown = () => {
-            if(botPlayer.y + botPlayer.h < state.screen.height){
-                botPlayer.y += 1 * velocityPlayerBot
+            if(newPlayer.lessThenScreenHeight(state.screen.height)){
+                newPlayer.playerY += 1 * velocityPlayerBot
                 return
             }
             playerDirection = state.screen.height
         }
 
         const ArrowUp = () => {
-            if(botPlayer.y >= 0){
-                botPlayer.y -= 1 * velocityPlayerBot
+            if(newPlayer.GreaterThenOrEqualZero()){
+                newPlayer.playerY -= 1 * velocityPlayerBot
                 return
             }
             playerDirection = 0

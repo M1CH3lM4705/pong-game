@@ -19,9 +19,10 @@ const drawPlayers = (ctx, game) => {
 
 
     for (const playerId in game.state.players) {
-        const player = game.state.players[playerId]
+        const { newPlayer } = game.state.players[playerId]
+
         ctx.fillStyle = 'blue'
-        ctx.fillRect(player.x, player.y, player.w, player.h)
+        ctx.fillRect(newPlayer.playerX, newPlayer.getPy(), newPlayer.w, newPlayer.h)
 
     }
 }

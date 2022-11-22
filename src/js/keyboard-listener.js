@@ -70,7 +70,7 @@ const createKeyboardListener = () => {
         }
 
         const apply = (target, callback) => {
-            console.log(target)
+
             arrayEventsIn.forEach(type => {
                 target.addEventListener(type, e => onPressedStart(e, callback))
             });

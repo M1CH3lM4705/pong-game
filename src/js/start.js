@@ -15,8 +15,8 @@ const beginGame = () => {
     const game = createGame(screen)
     const {resizeCanvas} =  Canvas()
 
-    game.addPlayer({playerId:'player1', playerX:0, playerY:0, w:20, h:150, score:0})
-    game.addPlayer({playerId:'raquete2', playerX:screen.width - 20, playerY:0, w:20, h:150, score:0})
+    game.addPlayer({playerId:'player1', playerX:0, playerY:0})
+    game.addPlayer({playerId:'raquete2', playerX:screen.width - 20, playerY:0})
 
     const start = () => {
 
