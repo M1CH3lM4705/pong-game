@@ -8,7 +8,7 @@ const createGame = ({width, height}) => {
     let ballXDirection = 0
     let ballYDirection = 0
     let playerDirection = 0
-    let velocityPlayerBot = 6
+    let velocityPlayerBot = 0
 
     const state = {
         players: {},
@@ -26,8 +26,8 @@ const createGame = ({width, height}) => {
     }
     const updateScores = () => {
         const { player1, raquete2 } = state.players
-        scorePlayer1.innerText = player1.score
-        scorePlayer2.innerText = raquete2.score
+        scorePlayer1.innerText = player1.newPlayer.getScore()
+        scorePlayer2.innerText = raquete2.newPlayer.getScore()
     }
 
     const reset = () => {
@@ -35,11 +35,11 @@ const createGame = ({width, height}) => {
         ballXDirection = 0
         ballYDirection = 0
         playerDirection = 0
-        velocityPlayerBot = 6
+        velocityPlayerBot = 0
         
         const {players:{player1, raquete2}, ball:{ballPong}} = state
-        player1.score = 0
-        raquete2.score = 0
+        player1.newPlayer.resetPlayer()
+        raquete2.newPlayer.resetPlayer()
         ballPong.w = width / 2
         ballPong.h = height / 2
         updateScores()
@@ -84,7 +84,7 @@ const createGame = ({width, height}) => {
 
         const ArrowDown = () => {
             if(newPlayer.lessThenScreenHeight(state.screen.height)){
-                newPlayer.playerY += 1 * velocityPlayerBot
+                newPlayer.playerDown(velocityPlayerBot)
                 return
             }
             playerDirection = state.screen.height
@@ -92,7 +92,7 @@ const createGame = ({width, height}) => {
 
         const ArrowUp = () => {
             if(newPlayer.GreaterThenOrEqualZero()){
-                newPlayer.playerY -= 1 * velocityPlayerBot
+                newPlayer.playerUp(velocityPlayerBot)
                 return
             }
             playerDirection = 0
@@ -143,7 +143,7 @@ const createGame = ({width, height}) => {
         if(ball.y >= state.screen.height - ball.raio) ballYDirection *= -1
 
         if(ball.x <= 0){
-            player2.score += 1
+            player2.newPlayer.incrementScore()
             updateScores()
             createBall()
             
@@ -151,23 +151,24 @@ const createGame = ({width, height}) => {
         }
 
         if(ball.x >= state.screen.width){
-            player1.score += 1
+            player1.newPlayer.incrementScore()
+            velocityPlayerBot = 0
             updateScores()
             createBall()
             
             return;
         }
 
-        if(ball.x <= (player1.x + player1.w + ball.raio) && 
-            (ball.y > player1.y && ball.y < player1.y + player1.h)){
-            ball.x = (player1.x + player1.w) + ball.raio
+        if(ball.x <= (player1.newPlayer.playerX + player1.newPlayer.w + ball.raio) && 
+            (ball.y > player1.newPlayer.getPy() && ball.y < player1.newPlayer.getPy() + player1.newPlayer.h)){
+            ball.x = (player1.newPlayer.playerX + player1.newPlayer.w) + ball.raio
             ballXDirection *= -1
             ballSpeed +=1
         }
 
-        if(ball.x >= (player2.x - ball.raio) && 
-            (ball.y > player2.y && ball.y < player2.y + player2.h)){
-                ball.x = player2.x - ball.raio
+        if(ball.x >= (player2.newPlayer.playerX - ball.raio) && 
+            (ball.y > player2.newPlayer.getPy() && ball.y < player2.newPlayer.getPy() + player2.newPlayer.h)){
+                ball.x = player2.newPlayer.playerX - ball.raio
                 ballXDirection *= -1
                 ballSpeed +=1
                 velocityPlayerBot += 1
