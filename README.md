@@ -15,7 +15,7 @@ Pong Game é um jogo que simula o tênis de mesa. Foi inspirando no jogo do Atar
 ## General info
 Este projeto foi desenvolvido com o intuíto de intesificar e melhorar conceitos e 
 fundamentos que já adquiri e continuo tendo.
-Nesse jogo utilizei o canvas do html 5 e no Javascrip, patterns e boas praticas, mas tem muito a melhorar...
+Nesse jogo utilizei o canvas do html 5 e no Javascript, patterns e boas praticas, mas tem muito a melhorar...
 
 ## Technologies
 Project is created with:
